@@ -1,11 +1,11 @@
+import First from './pages/first/first';
+
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        olá
-      </header>
+      <First/>
     </div>
   );
 }
