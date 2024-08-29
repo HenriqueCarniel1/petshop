@@ -1,11 +1,12 @@
-import First from './pages/first/first';
+import List from "./components/list";
+
 
 
 
 function App() {
   return (
     <div className="App">
-      <First/>
+      <List/>
     </div>
   );
 }
