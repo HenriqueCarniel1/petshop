@@ -11,6 +11,7 @@ O **PetShop** é um sistema web intuitivo e eficiente desenvolvido para otimizar
 - **Cadastro e Gerenciamento de Donos**: Mantém um banco de dados dos donos dos animais, com informações de contato e detalhes relevantes para facilitar o relacionamento com os clientes.
 - **Visualização de Agendamentos**: Oferece uma visão clara e acessível de todos os agendamentos, permitindo a fácil visualização e gestão dos horários marcados.
 - **Remoção de Agendamentos**: Proporciona a capacidade de remover agendamentos quando necessário, garantindo flexibilidade no gerenciamento de horários.
+- **Filtro de Atividades Diárias**: Inclui uma funcionalidade de pesquisa que permite filtrar e visualizar as atividades agendadas para um dia específico, ajudando a gerenciar e organizar a agenda do petshop de forma eficiente.
 
 ### Tecnologias Utilizadas
 
