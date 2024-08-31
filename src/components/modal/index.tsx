@@ -2,12 +2,22 @@
 import { Dialog } from '@headlessui/react'
 import Input from '../input/index'
 import TextArea from '../textArea';
+import { useState } from 'react';
+
 interface Props {
     open: boolean;
     setOpen: () => void;
 }
 
 export default function Modal({ open, setOpen }: Props) {
+    const [nome, setNome] = useState<string>('');
+    const [nomePet, setNomePet] = useState<string>('');
+    const [telefone, setTelefone] = useState<string>('');
+    const [descricao, setDescricao] = useState<string>('');
+    const [data, setData] = useState<string>('');
+    const [time, setTime] = useState<string>('');
+
+
 
     return (
         <Dialog open={open} onClose={setOpen} className="relative z-10">
@@ -26,13 +36,16 @@ export default function Modal({ open, setOpen }: Props) {
 
                                     <Input
                                         nome="Nome do tutor: "
-                                        icon=
-                                        {<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M17.448 15.1204C17.448 17.4342 17.448 19.3099 10 19.3099C2.552 19.3099 2.552 17.4342 2.552 15.1204C2.552 12.8066 5.88658 10.9309 10 10.9309C14.1134 10.9309 17.448 12.8066 17.448 15.1204Z" fill="#9282FA" />
-                                            <path d="M10 8.13794C12.0567 8.13794 13.724 6.47069 13.724 4.41394C13.724 2.35719 12.0567 0.689941 10 0.689941C7.94325 0.689941 6.276 2.35727 6.276 4.41394C6.276 6.47061 7.94325 8.13794 10 8.13794Z" fill="#9282FA" fill-opacity="0.4" />
-                                        </svg>}
+                                        icon={
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M17.448 15.1204C17.448 17.4342 17.448 19.3099 10 19.3099C2.552 19.3099 2.552 17.4342 2.552 15.1204C2.552 12.8066 5.88658 10.9309 10 10.9309C14.1134 10.9309 17.448 12.8066 17.448 15.1204Z" fill="#9282FA" />
+                                                <path d="M10 8.13794C12.0567 8.13794 13.724 6.47069 13.724 4.41394C13.724 2.35719 12.0567 0.689941 10 0.689941C7.94325 0.689941 6.276 2.35727 6.276 4.41394C6.276 6.47061 7.94325 8.13794 10 8.13794Z" fill="#9282FA" fill-opacity="0.4" />
+                                            </svg>
+                                        }
                                         placeholder="Digite seu nome"
                                         type='text'
+                                        value={nome}
+                                        onChange={(e) => setNome(e.target.value)}
                                     />
 
                                     <Input
@@ -44,6 +57,8 @@ export default function Modal({ open, setOpen }: Props) {
                                         }
                                         placeholder="Digite o nome do pet"
                                         type='text'
+                                        value={nomePet}
+                                        onChange={(e) => setNomePet(e.target.value)}
                                     />
 
                                     <Input
@@ -55,9 +70,11 @@ export default function Modal({ open, setOpen }: Props) {
                                         }
                                         placeholder="Digite seu nome"
                                         type='tel'
+                                        value={telefone}
+                                        onChange={(e) => setTelefone(e.target.value)}
                                     />
 
-                                    <TextArea />
+                                    <TextArea value={descricao} onChange={(e:any) => setDescricao(e.target.value)} />
 
                                     <div className='flex justify-between'>
 
@@ -74,6 +91,8 @@ export default function Modal({ open, setOpen }: Props) {
                                                     type="date"
                                                     id="date"
                                                     className='bg-transparent outline-none ml-2 focus:border-purple-500 focus:outline-none'
+                                                    value={data}
+                                                    onChange={(e) => setData(e.target.value)}
                                                 />
                                             </div>
                                         </div>
@@ -91,6 +110,8 @@ export default function Modal({ open, setOpen }: Props) {
                                                     type="time"
                                                     id="time"
                                                     className='bg-transparent outline-none ml-2 focus:border-purple-500 focus:outline-none'
+                                                    value={time}
+                                                    onChange={(e) => setTime(e.target.value)}
                                                 />
                                             </div>
                                         </div>
@@ -115,7 +136,7 @@ export default function Modal({ open, setOpen }: Props) {
                         <button
                             type="button"
                             className="bg-background-brand rounded-md p-2 font-interTight ml-4"
-                            onClick={setOpen}
+                            onClick={() => setOpen}
                         >
                             Agendar
                         </button>
