@@ -1,6 +1,12 @@
+import { useState } from "react";
 import List from "../../components/list";
+import Modal from "../../components/modal";
 
 function Home() {
+
+    const [open , setOpen] = useState<boolean>(false)
+
+
     return (
         <div className="flex justify-center items-center h-[75vh]">
             <div className="w-1/2">
@@ -34,7 +40,19 @@ function Home() {
                             <List />
                         </div>
                     </div>
+
+                    {/* Modal */}
+                    {
+                        open && <Modal open={open} setOpen={() => setOpen(false)} />
+                    }
                 </main>
+
+                <button 
+                    className="font-interTight p-3 rounded-md bg-content-brand fixed bottom-10 right-10"
+                    onClick={() => setOpen(!open)}
+                >
+                    Novo Agendamento
+                </button>
             </div>
         </div>
 
