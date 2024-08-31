@@ -13,6 +13,7 @@ interface ItemData {
 const List = ({ data }: { data: ItemData[] }) => {
     const [items, setItems] = useState<ItemData[]>(data);
 
+    // Função para remover um item
     const remove = async (id: number) => {
         try {
             await axios.delete(`http://localhost:4000/users/delete/${id}`);
@@ -23,14 +24,8 @@ const List = ({ data }: { data: ItemData[] }) => {
     };
 
     useEffect(() => {
-        axios.get("http://localhost:4000/users/get")
-            .then(response => {
-                setItems(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching items:', error);
-            });
-    },[]);
+        setItems(data);
+    }, [data]);
 
     return (
         <div>

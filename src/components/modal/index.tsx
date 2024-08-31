@@ -4,7 +4,6 @@ import Input from '../input/index';
 import TextArea from '../textArea';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useAppContext } from '../../context/AppContext';
 
 interface Props {
     open: boolean;
@@ -18,8 +17,6 @@ export default function Modal({ open, setOpen }: Props) {
     const [descricao, setDescricao] = useState<string>('');
     const [data, setData] = useState<string>('');
     const [time, setTime] = useState<string>('');
-
-    const { setClicked } = useAppContext();
 
     const handleSubmit = async () => {
         try {
@@ -153,7 +150,7 @@ export default function Modal({ open, setOpen }: Props) {
                         <button
                             type="button"
                             className="bg-background-brand rounded-md p-2 font-interTight ml-4"
-                            onClick={() => { handleSubmit(); setOpen();  setClicked() }}
+                            onClick={() => { handleSubmit(); setOpen() }}
                         >
                             Agendar
                         </button>

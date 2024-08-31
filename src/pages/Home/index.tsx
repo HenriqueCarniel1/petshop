@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import List from "../../components/list";
 import Modal from "../../components/modal";
 import axios from "axios";
-import { useAppContext } from "../../context/AppContext";
 
 interface Data {
     id: number;
@@ -18,7 +17,9 @@ function Home() {
     const [data, setData] = useState<Data[]>([]);
     const [open, setOpen] = useState<boolean>(false);
 
-    const { clicked } = useAppContext();
+    const morningData = data.filter(item => item.hora >= "05:00" && item.hora < "12:00");
+    const afternoonData = data.filter(item => item.hora >= "12:00" && item.hora < "18:00");
+    const nightData = data.filter(item => item.hora >= "18:00" && item.hora < "24:00");
 
     useEffect(() => {
         axios.get("http://localhost:4000/users/get")
@@ -28,7 +29,17 @@ function Home() {
             .catch(error => {
                 console.error("There was an error fetching the data!", error);
             });
-    }, [clicked]);
+    }, [open]);
+    
+    useEffect(() => {
+        axios.get("http://localhost:4000/users/get")
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(error => {
+                console.error("There was an error fetching the data!", error);
+            });
+    }, [open]);
 
     return (
         <div className="flex justify-center items-center h-[75vh]">
@@ -43,36 +54,43 @@ function Home() {
                 </header>
 
                 <main>
-                    {/* <div className="space-y-6">
+                    <div className="space-y-6">
                         <div className="bg-background-tertiary p-6 rounded-lg">
                             <h2 className="text-xl font-interTight text-white mb-4 flex items-center">
                                 <span className="mr-2">☀️</span>Manhã
                             </h2>
-
+                            {morningData.length > 0 ? (
+                                <List data={morningData} />
+                            ) : (
+                                <p className="text-white">Nenhum agendamento para a manhã.</p>
+                            )}
                         </div>
 
                         <div className="bg-background-tertiary p-6 rounded-lg">
                             <h2 className="text-xl font-interTight text-white mb-4 flex items-center">
                                 <span className="mr-2">🐾</span>Tarde
                             </h2>
-
+                            {afternoonData.length > 0 ? (
+                                <List data={afternoonData} />
+                            ) : (
+                                <p className="text-white">Nenhum agendamento para a tarde.</p>
+                            )}
                         </div>
 
                         <div className="bg-background-tertiary p-6 rounded-lg">
                             <h2 className="text-xl font-interTight text-white mb-4 flex items-center">
                                 <span className="mr-2">🌙</span>Noite
                             </h2>
-
+                            {nightData.length > 0 ? (
+                                <List data={nightData} />
+                            ) : (
+                                <p className="text-white">Nenhum agendamento para a noite.</p>
+                            )}
                         </div>
-                    </div> */}
-
-                    {data.map((item, key) => (
-                        <div key={key}>
-                            <p className="text-content-primary">{item.nomedono}</p>
-                        </div>
-                    ))}
-
-                    {open && <Modal open={open} setOpen={() => setOpen(false)} />}
+                    </div>
+                    {
+                        open && <Modal open={open} setOpen={() => setOpen(false)} />
+                    }
                 </main>
 
                 <button
