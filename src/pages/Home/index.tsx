@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import List from "../../components/list";
 import Modal from "../../components/modal";
 import axios from "axios";
+import { useAppContext } from "../../context/AppContext";
 
 interface Data {
     id: number;
@@ -17,6 +18,8 @@ function Home() {
     const [data, setData] = useState<Data[]>([]);
     const [open, setOpen] = useState<boolean>(false);
 
+    const { clicked } = useAppContext();
+
     useEffect(() => {
         axios.get("http://localhost:4000/users/get")
             .then(response => {
@@ -25,7 +28,7 @@ function Home() {
             .catch(error => {
                 console.error("There was an error fetching the data!", error);
             });
-    }, []);
+    }, [clicked]);
 
     return (
         <div className="flex justify-center items-center h-[75vh]">
