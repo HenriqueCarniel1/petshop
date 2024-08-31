@@ -1,4 +1,4 @@
-import List from "./components/list";
+import Home from "./pages/Home";
 
 
 
@@ -6,7 +6,7 @@ import List from "./components/list";
 function App() {
   return (
     <div className="App">
-      <List/>
+      <Home/>
     </div>
   );
 }

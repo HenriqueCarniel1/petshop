@@ -8,14 +8,16 @@ interface Props {
 function List({ horario, nomeCachorro, nomeDono, tipo }: Props) {
     return (
         <div>
-            <div className="flex items-center">
-                <p className="mr-3 font-inter text-paragraph-medium">{horario}</p>
-                <p className="mr-16 font-inter text-paragraph-medium">{nomeCachorro + " / " + nomeDono }</p>
-                <p className="mr-16 font-inter text-paragraph-medium">{tipo}</p>
-                <button className="font-inter text-paragraph-small">Remover agendamento</button>
-            </div>
+            <div className="flex justify-between items-center p-6">
+                <div className="flex">
+                <p className="font-interTight text-inter text-content-primary mb-0 mr-4">{horario}12:00</p>
+                <p className="font-interTight text-paragraph-medium text-content-primary mb-0">{nomeCachorro}asdfasdfsaf / </p>
+                <p className="font-interTight text-paragraph-medium text-content-secondary mb-0">{nomeDono}asfdfasdf</p>
+                </div>
 
-            <hr className="border-gray-400" />
+                <p className="font-inter text-paragraph-medium text-content-secondary mb-0">{tipo}sdvsvsdvds</p>
+                <button className="font-inter text-paragraph-small text-content-secondary">Remover agendamento</button>
+            </div>
 
         </div>
     );
