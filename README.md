@@ -1,46 +1,20 @@
-# Getting Started with Create React App
+# PetShop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição
 
-## Available Scripts
+O **PetShop** é um sistema web intuitivo e eficiente desenvolvido para otimizar o gerenciamento de agendamentos e informações de um petshop. Com este aplicativo, é possível agendar horários para diversos serviços, como consultas veterinárias, banhos e tosas, e gerenciar detalhes sobre os animais de estimação e seus donos de forma prática e organizada.
 
-In the project directory, you can run:
+### Funcionalidades
 
-### `npm start`
+- **Agendamento de Horários**: Facilita o agendamento de horários para uma ampla gama de serviços oferecidos pelo petshop. Os usuários podem reservar horários para consultas, tratamentos, banhos e tosas com facilidade.
+- **Cadastro e Gerenciamento de Animais**: Permite o cadastro detalhado dos animais, incluindo informações essenciais como nome, espécie, raça e idade. Os dados dos animais são mantidos atualizados e organizados.
+- **Cadastro e Gerenciamento de Donos**: Mantém um banco de dados dos donos dos animais, com informações de contato e detalhes relevantes para facilitar o relacionamento com os clientes.
+- **Visualização de Agendamentos**: Oferece uma visão clara e acessível de todos os agendamentos, permitindo a fácil visualização e gestão dos horários marcados.
+- **Remoção de Agendamentos**: Proporciona a capacidade de remover agendamentos quando necessário, garantindo flexibilidade no gerenciamento de horários.
+- **Filtro de Atividades Diárias**: Inclui uma funcionalidade de pesquisa que permite filtrar e visualizar as atividades agendadas para um dia específico, ajudando a gerenciar e organizar a agenda do petshop de forma eficiente.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Tecnologias Utilizadas
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Frontend**: Desenvolvido com **React** para uma interface de usuário interativa e dinâmica, e **Tailwind CSS** para uma estilização moderna e responsiva.
+- **Backend**: Utiliza **Node.js** com **Express** para um servidor eficiente e flexível.
+- **Banco de Dados**: Armazena dados de forma robusta com **PostgreSQL**, garantindo integridade e performance nas operações de banco de dados.
