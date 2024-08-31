@@ -1,26 +1,52 @@
-interface Props {
-    horario?: string;
-    nomeCachorro?: string;
-    nomeDono?: string;
-    tipo?: string;
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+
+interface ItemData {
+    id: number;
+    hora: string;
+    nomepet: string;
+    nomedono: string;
+    descricao: string;
+    data: string;
 }
 
-function List({ horario, nomeCachorro, nomeDono, tipo }: Props) {
+const List = ({ data }: { data: ItemData[] }) => {
+    const [items, setItems] = useState<ItemData[]>(data);
+
+    const remove = async (id: number) => {
+        try {
+            await axios.delete(`http://localhost:4000/users/delete/${id}`);
+            setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+        } catch (error) {
+            console.error('Error deleting item:', error);
+        }
+    };
+
+    useEffect(() => {
+        axios.get("http://localhost:4000/users/get")
+            .then(response => {
+                setItems(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching items:', error);
+            });
+    },[]);
+
     return (
         <div>
-            <div className="flex justify-between items-center p-6">
-                <div className="flex">
-                <p className="font-interTight text-inter text-content-primary mb-0 mr-4">{horario}12:00</p>
-                <p className="font-interTight text-paragraph-medium text-content-primary mb-0">{nomeCachorro}asdfasdfsaf / </p>
-                <p className="font-interTight text-paragraph-medium text-content-secondary mb-0">{nomeDono}asfdfasdf</p>
+            {items.map((item) => (
+                <div key={item.id} className="flex justify-between items-center p-6">
+                    <div className="flex">
+                        <p className="font-interTight text-inter text-content-primary mb-0 mr-4">{item.hora}</p>
+                        <p className="font-interTight text-paragraph-medium text-content-primary mb-0">{item.nomepet} / </p>
+                        <p className="font-interTight text-paragraph-medium text-content-secondary mb-0">{item.nomedono}</p>
+                    </div>
+                    <p className="font-inter text-paragraph-medium text-content-secondary mb-0">{item.descricao}</p>
+                    <button className="font-inter text-paragraph-small text-content-secondary" onClick={() => remove(item.id)}>Remover agendamento</button>
                 </div>
-
-                <p className="font-inter text-paragraph-medium text-content-secondary mb-0">{tipo}sdvsvsdvds</p>
-                <button className="font-inter text-paragraph-small text-content-secondary">Remover agendamento</button>
-            </div>
-
+            ))}
         </div>
     );
-}
+};
 
 export default List;

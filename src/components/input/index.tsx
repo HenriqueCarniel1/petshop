@@ -14,7 +14,7 @@ function Input({ nome, icon, placeholder, type, value, onChange }: Props) {
         <div>
             <label htmlFor="" className='text-content-primary font-inter'>{nome}</label>
             <div className='flex border-1 border-gray-500 rounded-lg items-center mb-4'>
-                {icon}
+                <i className='ml-2'>{icon}</i>
                 <input
                     className='bg-transparent w-100 outline-none p-2 text-content-secondary font-inter'
                     type={type}

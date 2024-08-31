@@ -1,8 +1,9 @@
-'use client'
-import { Dialog } from '@headlessui/react'
-import Input from '../input/index'
+'use client';
+import { Dialog } from '@headlessui/react';
+import Input from '../input/index';
 import TextArea from '../textArea';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 interface Props {
     open: boolean;
@@ -17,8 +18,21 @@ export default function Modal({ open, setOpen }: Props) {
     const [data, setData] = useState<string>('');
     const [time, setTime] = useState<string>('');
 
-
-
+    const handleSubmit = async () => {
+        try {
+            await axios.post("http://localhost:4000/users/add", {
+                nomeDono: nome,
+                nomePet: nomePet,
+                telefoneDono: telefone,
+                descricao: descricao,
+                Data: data,
+                Hora: time
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    
     return (
         <Dialog open={open} onClose={setOpen} className="relative z-10">
             <div className="fixed inset-0 bg-black bg-opacity-50"></div>
@@ -74,7 +88,7 @@ export default function Modal({ open, setOpen }: Props) {
                                         onChange={(e) => setTelefone(e.target.value)}
                                     />
 
-                                    <TextArea value={descricao} onChange={(e:any) => setDescricao(e.target.value)} />
+                                    <TextArea value={descricao} onChange={(e: any) => setDescricao(e.target.value)} />
 
                                     <div className='flex justify-between'>
 
@@ -136,7 +150,7 @@ export default function Modal({ open, setOpen }: Props) {
                         <button
                             type="button"
                             className="bg-background-brand rounded-md p-2 font-interTight ml-4"
-                            onClick={() => setOpen}
+                            onClick={() => { handleSubmit(); setOpen(); }}
                         >
                             Agendar
                         </button>
