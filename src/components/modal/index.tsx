@@ -8,9 +8,10 @@ import axios from 'axios';
 interface Props {
     open: boolean;
     setOpen: () => void;
+    onCloseModal: () => void;
 }
 
-export default function Modal({ open, setOpen }: Props) {
+export default function Modal({ open, setOpen, onCloseModal }: Props) {
     const [nome, setNome] = useState<string>('');
     const [nomePet, setNomePet] = useState<string>('');
     const [telefone, setTelefone] = useState<string>('');
@@ -28,6 +29,7 @@ export default function Modal({ open, setOpen }: Props) {
                 Data: data,
                 Hora: time
             });
+            onCloseModal();
         } catch (error) {
             console.log(error);
         }
