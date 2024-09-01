@@ -84,7 +84,7 @@ function Home() {
                         </div>
 
                         <div className="bg-background-tertiary p-6 rounded-lg">
-                            <h2 className="flex justify-between text-xl font-interTight text-white mb-4 flex items-center">
+                            <h2 className="flex justify-between text-xl font-interTight text-white mb-4 items-center">
                                 <span className="mr-2">🐾 Tarde</span>
                                 <h5 className="font-inter text-title text-content-secondary">12h-18h</h5>
                             </h2>
@@ -96,7 +96,7 @@ function Home() {
                         </div>
 
                         <div className="bg-background-tertiary p-6 rounded-lg">
-                            <h2 className="flex justify-between text-xl font-interTight text-white mb-4 flex items-center">
+                            <h2 className="flex justify-between text-xl font-interTight text-white mb-4 items-center">
                                 <span className="mr-2">🌙 Noite</span>
                                 <h5 className="font-inter text-title text-content-secondary">18h-23h</h5>
                             </h2>
