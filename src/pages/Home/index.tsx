@@ -70,20 +70,23 @@ function Home() {
 
                 <main>
                     <div className="space-y-6">
-                        <div className="bg-background-tertiary p-6 rounded-lg">
-                            <h2 className="text-xl font-interTight text-white mb-4 flex items-center">
-                                <span className="mr-2">☀️</span>Manhã
+                        <div className=" bg-background-tertiary p-6 rounded-lg">
+                            <h2 className="flex justify-between text-xl font-interTight text-white mb-4 items-center">
+                                <span className="mr-2">☀️ Manhã</span>
+                                <h5 className="font-inter text-title text-content-secondary">05h-12h</h5>
                             </h2>
                             {morningData.length > 0 ? (
                                 <List data={morningData} />
                             ) : (
                                 null
                             )}
+
                         </div>
 
                         <div className="bg-background-tertiary p-6 rounded-lg">
-                            <h2 className="text-xl font-interTight text-white mb-4 flex items-center">
-                                <span className="mr-2">🐾</span>Tarde
+                            <h2 className="flex justify-between text-xl font-interTight text-white mb-4 flex items-center">
+                                <span className="mr-2">🐾 Tarde</span>
+                                <h5 className="font-inter text-title text-content-secondary">12h-18h</h5>
                             </h2>
                             {afternoonData.length > 0 ? (
                                 <List data={afternoonData} />
@@ -93,8 +96,9 @@ function Home() {
                         </div>
 
                         <div className="bg-background-tertiary p-6 rounded-lg">
-                            <h2 className="text-xl font-interTight text-white mb-4 flex items-center">
-                                <span className="mr-2">🌙</span>Noite
+                            <h2 className="flex justify-between text-xl font-interTight text-white mb-4 flex items-center">
+                                <span className="mr-2">🌙 Noite</span>
+                                <h5 className="font-inter text-title text-content-secondary">18h-23h</h5>
                             </h2>
                             {nightData.length > 0 ? (
                                 <List data={nightData} />
