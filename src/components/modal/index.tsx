@@ -96,7 +96,7 @@ export default function Modal({ open, setOpen, onCloseModal }: Props) {
 
                                     <TextArea value={descricao} onChange={(e: any) => setDescricao(e.target.value)} />
 
-                                    <div className='flex justify-between'>
+                                    <div className='flex max-sm:grid justify-between'>
 
                                         <div className='grid focus-within:border-purple-500'>
                                             <label htmlFor="date" className='text-content-primary font-inter'>Data: </label>
