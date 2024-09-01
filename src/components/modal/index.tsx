@@ -1,8 +1,8 @@
 'use client';
-import { Dialog } from '@headlessui/react';
+import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import Input from '../input/index';
 import TextArea from '../textArea';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 interface Props {
@@ -34,19 +34,19 @@ export default function Modal({ open, setOpen, onCloseModal }: Props) {
             console.log(error);
         }
     };
-    
+
     return (
         <Dialog open={open} onClose={setOpen} className="relative z-10">
             <div className="fixed inset-0 bg-black bg-opacity-50"></div>
 
             <div className="fixed inset-0 flex items-center justify-center p-4">
-                <Dialog.Panel className="relative w-full max-w-lg p-4 transform overflow-hidden rounded-lg bg-background-tertiary text-left shadow-xl transition-all">
+                <DialogPanel className="relative w-full max-w-lg p-4 transform overflow-hidden rounded-lg bg-background-tertiary text-left shadow-xl transition-all">
                     <div className="bg-background-tertiary pb-4">
                         <div className="">
                             <div className=" ">
-                                <Dialog.Title as="h2" className="text-content-primary">
+                                <DialogTitle as="h2" className="text-content-primary">
                                     Agende um Atendimento
-                                </Dialog.Title>
+                                </DialogTitle>
                                 <div className="mt-2">
                                     <p className='text-content-secondary font-inter'>preencha os dados do cliente para o agendamento</p>
 
@@ -157,7 +157,7 @@ export default function Modal({ open, setOpen, onCloseModal }: Props) {
                             Agendar
                         </button>
                     </div>
-                </Dialog.Panel>
+                </DialogPanel>
             </div>
         </Dialog>
     );

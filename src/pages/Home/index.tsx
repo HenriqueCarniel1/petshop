@@ -63,6 +63,7 @@ function Home() {
                             <input
                                 type="date"
                                 className="bg-transparent outline-none font-inter p-2 w-full text-content-primary border-0 focus:outline-none color"
+                                defaultValue={new Date().toISOString().split('T')[0]}
                             />
                         </div>
                     </div>
