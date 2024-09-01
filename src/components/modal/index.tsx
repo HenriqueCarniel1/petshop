@@ -21,7 +21,7 @@ export default function Modal({ open, setOpen, onCloseModal }: Props) {
 
     const handleSubmit = async () => {
         try {
-            await axios.post("http://localhost:4000/users/add", {
+            await axios.post("https://api-petshop-n320.onrender.com/users/add", {
                 nomeDono: nome,
                 nomePet: nomePet,
                 telefoneDono: telefone,

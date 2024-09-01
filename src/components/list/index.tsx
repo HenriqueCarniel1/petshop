@@ -15,7 +15,7 @@ const List = ({ data }: { data: ItemData[] }) => {
 
     const remove = async (id: number) => {
         try {
-            await axios.delete(`http://localhost:4000/users/delete/${id}`);
+            await axios.delete(`https://api-petshop-n320.onrender.com/users/delete/${id}`);
             setItems((prevItems) => prevItems.filter((item) => item.id !== id));
         } catch (error) {
             console.error('Error deleting item:', error);

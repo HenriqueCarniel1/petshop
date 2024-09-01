@@ -22,7 +22,7 @@ function Home() {
     const nightData = data.filter(item => item.hora >= "18:00" && item.hora < "24:00");
 
     const fetchData = () => {
-        axios.get("http://localhost:4000/users/get")
+        axios.get("https://api-petshop-n320.onrender.com/users/get")
             .then(response => {
                 setData(response.data);
             })
