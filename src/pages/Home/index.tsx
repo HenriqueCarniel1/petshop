@@ -16,13 +16,17 @@ interface Data {
 function Home() {
     const [data, setData] = useState<Data[]>([]);
     const [open, setOpen] = useState<boolean>(false);
+    let [date, setDate] = useState<string>('')
 
     const morningData = data.filter(item => item.hora >= "05:00" && item.hora < "12:00");
     const afternoonData = data.filter(item => item.hora >= "12:00" && item.hora < "18:00");
     const nightData = data.filter(item => item.hora >= "18:00" && item.hora < "24:00");
 
     const fetchData = () => {
-        axios.get("https://api-petshop-n320.onrender.com/users/get")
+        if(!date) {
+            date = new Date().toISOString().split('T')[0]
+        }
+        axios.get(`https://api-petshop-n320.onrender.com/users/get/${date}`)
             .then(response => {
                 setData(response.data);
             })
@@ -33,7 +37,7 @@ function Home() {
 
     useEffect(() => {
         fetchData()
-    }, [open]);
+    }, [open, date]);
 
     return (
         <div className="flex justify-center items-center h-[75vh]">
@@ -64,6 +68,7 @@ function Home() {
                                 type="date"
                                 className="bg-transparent outline-none font-inter p-2 w-full text-content-primary border-0 focus:outline-none color"
                                 defaultValue={new Date().toISOString().split('T')[0]}
+                                onChange={(e) => setDate(e.target.value)}
                             />
                         </div>
                     </div>
@@ -71,7 +76,7 @@ function Home() {
 
                 <main>
                     <div className="space-y-6">
-                        <div className=" bg-background-tertiary p-6 rounded-lg">
+                        <div className=" bg-background-tertiary max-sm:p-2  sm:p-6 rounded-lg">
                             <h2 className="flex justify-between text-xl font-interTight text-white mb-4 items-center">
                                 <span className="mr-2">☀️ Manhã</span>
                                 <h5 className="font-inter text-title text-content-secondary">05h-12h</h5>

@@ -18,8 +18,10 @@ export default function Modal({ open, setOpen, onCloseModal }: Props) {
     const [descricao, setDescricao] = useState<string>('');
     const [data, setData] = useState<string>('');
     const [time, setTime] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
 
     const handleSubmit = async () => {
+        setLoading(true);
         try {
             await axios.post("https://api-petshop-n320.onrender.com/users/add", {
                 nomeDono: nome,
@@ -32,6 +34,8 @@ export default function Modal({ open, setOpen, onCloseModal }: Props) {
             onCloseModal();
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -148,13 +152,37 @@ export default function Modal({ open, setOpen, onCloseModal }: Props) {
                         >
                             Cancel
                         </button>
-
+                        
                         <button
                             type="button"
-                            className="bg-background-brand rounded-md p-2 font-interTight ml-4"
-                            onClick={() => { handleSubmit(); setOpen() }}
+                            className={`bg-background-brand rounded-md p-2 font-interTight ml-4 flex items-center justify-center ${loading ? 'cursor-not-allowed opacity-70' : ''
+                                }`}
+                            onClick={() => { handleSubmit(); setOpen()}}
+                            disabled={loading}
                         >
-                            Agendar
+                            {loading ? (
+                                <svg
+                                    className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                >
+                                    <circle
+                                        className="opacity-25"
+                                        cx="12"
+                                        cy="12"
+                                        r="10"
+                                        stroke="currentColor"
+                                        strokeWidth="4"
+                                    ></circle>
+                                    <path
+                                        className="opacity-75"
+                                        fill="currentColor"
+                                        d="M4 12a8 8 0 018-8v8H4z"
+                                    ></path>
+                                </svg>
+                            ) : (
+                                'Agendar'
+                            )}
                         </button>
                     </div>
                 </DialogPanel>
